@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>My Hello World</title>
+    <url>/2019/10/29/My-Hello-World/</url>
+    <content><![CDATA[<p>My first  blog on this website!</p>
+<p><img src="/2019/10/29/My-Hello-World/TheDarkSideOfTheMoon.jpg" alt="TheDarkSideOfTheMoon"></p>
+<a id="more"></a>
+
+<p>My first  blog on this website! As a matter of fact, I’ve been thinking about this for a long time. But not until a friend of mine introduce Hexo to me did I realize how easy it actually is to start my own blog. </p>
+<p>So now, I’m here ready to record something of my life, meaningful or not. Mainly my blogs will be about coding or computer skills, but once in a while I’d like to record some other fun stuffs here, you know, something like ‘The Dark Side of the Moon’ by Pink Floyd I’m listening now. Rock music, basketball, video games and so on.</p>
+<p>And also, thanks for visiting my blog!</p>
+]]></content>
+      <categories>
+        <category>personal journal or something</category>
+      </categories>
+      <tags>
+        <tag>hello world</tag>
+        <tag>daily</tag>
+      </tags>
+  </entry>
+</search>

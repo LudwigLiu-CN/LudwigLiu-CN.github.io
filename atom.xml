@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ludwig Liu</title>
+  
+  <subtitle>All in all you&#39;re just another brick in the wall.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-10-29T12:14:37.746Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Yimo Liu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My Hello World</title>
+    <link href="http://yoursite.com/2019/10/29/My-Hello-World/"/>
+    <id>http://yoursite.com/2019/10/29/My-Hello-World/</id>
+    <published>2019-10-29T08:31:34.000Z</published>
+    <updated>2019-10-29T12:14:37.746Z</updated>
+    
+    <content type="html"><![CDATA[<p>My first  blog on this website!</p><p><img src="/2019/10/29/My-Hello-World/TheDarkSideOfTheMoon.jpg" alt="TheDarkSideOfTheMoon"></p><a id="more"></a><p>My first  blog on this website! As a matter of fact, I’ve been thinking about this for a long time. But not until a friend of mine introduce Hexo to me did I realize how easy it actually is to start my own blog. </p><p>So now, I’m here ready to record something of my life, meaningful or not. Mainly my blogs will be about coding or computer skills, but once in a while I’d like to record some other fun stuffs here, you know, something like ‘The Dark Side of the Moon’ by Pink Floyd I’m listening now. Rock music, basketball, video games and so on.</p><p>And also, thanks for visiting my blog!</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;My first  blog on this website!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2019/10/29/My-Hello-World/TheDarkSideOfTheMoon.jpg&quot; alt=&quot;TheDarkSideOfTheMoon&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="personal journal or something" scheme="http://yoursite.com/categories/personal-journal-or-something/"/>
+    
+    
+      <category term="hello world" scheme="http://yoursite.com/tags/hello-world/"/>
+    
+      <category term="daily" scheme="http://yoursite.com/tags/daily/"/>
+    
+  </entry>
+  
+</feed>
