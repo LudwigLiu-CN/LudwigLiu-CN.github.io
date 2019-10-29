@@ -1,11 +1,10 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   
-    <title>Tags | Ludwig Liu</title>
+    <title>tags | Ludwig Liu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Yimo Liu">
@@ -23,9 +22,9 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-      <body>
-        <header>
-          <div>
+    <body>
+      <header>
+        <div>
 		
 			<div id="imglogo">
 				<a href="/"><img src="/img/logo.svg" alt="Ludwig Liu" title="Ludwig Liu"/></a>
@@ -57,70 +56,26 @@
 			</nav>			
 </div>
 
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/tags/index.html" title="Tags" itemprop="url">Tags</a>
-  </h1>
-  <p class="article-author">By
-    
-      <a href="http://yoursite.com" title="Yimo Liu">Yimo Liu</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2019-10-29T08:25:40.000Z" itemprop="datePublished">2019-10-29</time>
-    Updated:<time datetime="2019-10-29T09:21:27.465Z" itemprop="dateModified">2019-10-29</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		
-		  
-	</div>
-		<footer class="article-footer clearfix">
+      </header>
+      <div id="container">
+          
+<div class="archive-title" >
+<h2 class="tag-icon">Tags</h2>
 
+<a data-src="/tags/hello-world/" href="#hello world" title="hello world">hello world<sup>1</sup></a>
 
-
-
-<div class="article-share" id="share">
-
-  <div data-url="http://yoursite.com/tags/index.html" data-title="Tags | Ludwig Liu" data-tsina="" class="share clearfix">
-  </div>
+<a data-src="/tags/small-talks/" href="#small talks" title="small talks">small talks<sup>1</sup></a>
 
 </div>
-</footer>   	       
-	</article>
-	
-	
-</div>  
-        </div>
-        <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2019 
-		
-		<a href="http://yoursite.com" target="_blank" title="Yimo Liu">Yimo Liu</a>
-		
-		</p>
+<div id="main" class="archive-part">
+<div class="all-list-box"></div>
 </div>
-</footer>
-        <script src="/js/jquery-2.1.0.min.js"></script>
+
+
+
+
+      </div>
+      <script src="/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
   $('.navbar').click(function(){
@@ -167,39 +122,28 @@ $(document).ready(function(){
 </script>
 
 
+
+
 <script type="text/javascript">
 $(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
+  var list    = $('.archive-title a'),
+      box     = $('.all-list-box'),
+      first   = $('.archive-title a:first-of-type');
+      box.load(first.attr('data-src').toString()+' #archive-page');
+      first.addClass('current');
+  list.each(function(){
+    $(this).click(function(){
+      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
+      box.load(listSrc);
+      list.removeClass('current');
+      $(this).addClass('current');
+     });  
     });
-  });
-});     
+  }); 
 </script>
 
 
 
 
-
-
-      </body>
-     </html>
-     
+    </body>
+   </html>
