@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CNNs of Thyroid Nodule Classification</title>
+    <url>/2019/10/30/ThyroidNoduleClassificationNote/</url>
+    <content><![CDATA[<p>I’m currently doing some research on classification of thyroid nodules by CNN. This is a note of some essays I found in this area.</p>
+<a id="more"></a>
+
+<h1 id="Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features"><a href="#Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features" class="headerlink" title="Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features"></a><strong>Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features</strong></h1><p><a href="https://ieeexplore.ieee.org/abstract/document/7952290" target="_blank" rel="noopener">https://ieeexplore.ieee.org/abstract/document/7952290</a></p>
+<ul>
+<li><p>*<em>Abstract: *</em></p>
+<p>Besides the general feature map extracted by the CNN, this work combines it with other hand-crafted features of the images. They integrated HOG, SIFT and LBP features with the high-level features extracted from CNNs and jointed them to form a one-dimensional vector.</p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/1.gif" alt="1"></p>
+</li>
+<li><p><strong>Feature selection strategy:</strong></p>
+<p>The feature map extracted from the VGG-F model has 4096 dimensions. With 144 dimensions’ HOG features, 26 dimensions’ LBP features and 512 dimensions’ VLAD features, the total count of feature dimensions we have is 4778. In order to reducing the redundancies and irrelevancies among feature vector, feature selection is required. The feature selection standard is based on sorting the differences of benign samples and malignant samples:<br>$$<br>diff_k = \vert\frac{1}{N_{MB}}\sum_{i=1}^{N_{MB}}{v_{ik}} - \frac{1}{N_{MM}}\sum_{i=1}^{N_{MM}}{v_{ik}}\vert \quad (k = 1, 2,…N)<br>$$<br>Where, <em>N<sub>MB</sub></em> and <em>N<sub>MM</sub></em> are the number of benign and malignant nodules in the training set, <em>v<sub>ik</sub></em> is the <em>k</em>th dimensional feature of the <em>i</em>th image. The top 1000 features with the largest differences will be chosen as our final features for the thyroid nodule classification. </p>
+<p><strong>Positive-Sample-First Majority Voting Strategy:</strong></p>
+<p>Suppose T types of features can be extracted from the thyroid ultrasound images. For a feature extraction method <em>k</em>, a classifier <em>h<sub>k</sub></em> can be trained on the dataset. The value predicted by the classifier for sample x is <em>h<sub>k</sub></em>(x). The final predicted classification result for sample x is expressed as follows, <em>h(x)=mode(h<sub>1</sub>(x),…,h<sub>T</sub>(x))</em>, where the <em>mode</em> is striving for the modal operation. If the votes of benign and malignance are the same on the condition that T is an even number, the sample is considered as malignancy.  </p>
+</li>
+</ul>
+<h1 id="A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis"><a href="#A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis" class="headerlink" title="A pre-trained convolutional neural network based method for thyroid nodule diagnosis"></a>A pre-trained convolutional neural network based method for thyroid nodule diagnosis</h1><p> <a href="https://www.sciencedirect.com/science/article/pii/S0041624X16301913" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0041624X16301913</a> </p>
+<ul>
+<li><p><strong>Abstract:</strong> </p>
+<p>In this study, we propose a hybrid method for thyroid nodule diagnosis, which is a fusion of two pre-trained convolutional neural networks (CNNs) with different convolutional layers and fully-connected layers.  </p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/4.jpg" alt="4"></p>
+</li>
+<li><p><strong>Data:</strong>  </p>
+<p>Each thyroid nodule has several longitudinal cutting maps or crosscutting maps. In total, 15,000 thyroid nodule images are obtained from different sonographic systems (Philips, GE-Healthcare, Esaote, Toshiba, Siemens, mindray and Hitachi) before surgery or FNA. The boundary of thyroid nodule in each image is manually delineated by physicians. So we can get 15,000 masks. These thyroid nodule images and their corresponding masks are in the same size and are both used for training our CNNs simultaneously. </p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/2.jpg" alt="2"></p>
+<p><strong>Combination of two different CNNs:</strong></p>
+<p> A special CNN based method is developed to classify thyroid nodules, which is a fusion of two different CNN architectures. Moreover, these two CNNs use a pre-training strategy for initialization to avoid local optimum and employ a multi-view strategy to improve the performance. </p>
+<p>To the best of our knowledge, different CNN architectures can learn different features, shallow network can be suitable for learning low-level features and deep network can take full advantage of learning high-level features. </p>
+<p>Our CNN architectures are pre-trained with a set of 1.3 million natural images from the ImageNet database. </p>
+<p>The image patches of size 225 * 225 cropped sampled randomly from thyroid nodule images are the inputs of our CNN based models, whose centers are in their corresponding masks.  </p>
+<p><strong>Split Dropout:</strong></p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/3.jpg" alt="3"></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Deep Learning - Essay Notes</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+        <tag>Medical Image</tag>
+        <tag>CNN</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>My Hello World</title>
     <url>/2019/10/29/My-Hello-World/</url>
     <content><![CDATA[<p>My first  blog on this website!</p>

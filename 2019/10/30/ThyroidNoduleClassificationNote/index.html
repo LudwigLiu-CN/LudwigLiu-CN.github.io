@@ -51,28 +51,37 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Ludwig Liu">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="I’m currently doing some research on classification of thyroid nodules by CNN. This is a note of some essays I found in this area.">
+<meta name="keywords" content="Deep Learning,Medical Image,CNN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CNNs of Thyroid Nodule Classification">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;ThyroidNoduleClassificationNote&#x2F;index.html">
 <meta property="og:site_name" content="Ludwig Liu">
+<meta property="og:description" content="I’m currently doing some research on classification of thyroid nodules by CNN. This is a note of some essays I found in this area.">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;ThyroidNoduleClassificationNote&#x2F;1.gif">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;ThyroidNoduleClassificationNote&#x2F;4.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;ThyroidNoduleClassificationNote&#x2F;2.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;ThyroidNoduleClassificationNote&#x2F;3.jpg">
+<meta property="og:updated_time" content="2019-10-30T06:20:13.181Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;30&#x2F;ThyroidNoduleClassificationNote&#x2F;1.gif">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2019/10/30/ThyroidNoduleClassificationNote/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Ludwig Liu</title>
+  <title>CNNs of Thyroid Nodule Classification | Ludwig Liu</title>
   
 
 
@@ -204,10 +213,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/ThyroidNoduleClassificationNote/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -221,8 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/30/ThyroidNoduleClassificationNote/" class="post-title-link" itemprop="url">CNNs of Thyroid Nodule Classification</a>
+          CNNs of Thyroid Nodule Classification
         </h1>
 
         <div class="post-meta">
@@ -248,6 +256,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
   
   <span class="post-meta-item">
     
@@ -286,136 +301,86 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>I’m currently doing some research on classification of thyroid nodules by CNN. This is a note of some essays I found in this area.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/30/ThyroidNoduleClassificationNote/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <p>I’m currently doing some research on classification of thyroid nodules by CNN. This is a note of some essays I found in this area.</p>
+<a id="more"></a>
+
+<h1 id="Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features"><a href="#Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features" class="headerlink" title="Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features"></a><strong>Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features</strong></h1><p><a href="https://ieeexplore.ieee.org/abstract/document/7952290" target="_blank" rel="noopener">https://ieeexplore.ieee.org/abstract/document/7952290</a></p>
+<ul>
+<li><p>*<em>Abstract: *</em></p>
+<p>Besides the general feature map extracted by the CNN, this work combines it with other hand-crafted features of the images. They integrated HOG, SIFT and LBP features with the high-level features extracted from CNNs and jointed them to form a one-dimensional vector.</p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/1.gif" alt="1"></p>
+</li>
+<li><p><strong>Feature selection strategy:</strong></p>
+<p>The feature map extracted from the VGG-F model has 4096 dimensions. With 144 dimensions’ HOG features, 26 dimensions’ LBP features and 512 dimensions’ VLAD features, the total count of feature dimensions we have is 4778. In order to reducing the redundancies and irrelevancies among feature vector, feature selection is required. The feature selection standard is based on sorting the differences of benign samples and malignant samples:<br>$$<br>diff_k = \vert\frac{1}{N_{MB}}\sum_{i=1}^{N_{MB}}{v_{ik}} - \frac{1}{N_{MM}}\sum_{i=1}^{N_{MM}}{v_{ik}}\vert \quad (k = 1, 2,…N)<br>$$<br>Where, <em>N<sub>MB</sub></em> and <em>N<sub>MM</sub></em> are the number of benign and malignant nodules in the training set, <em>v<sub>ik</sub></em> is the <em>k</em>th dimensional feature of the <em>i</em>th image. The top 1000 features with the largest differences will be chosen as our final features for the thyroid nodule classification. </p>
+<p><strong>Positive-Sample-First Majority Voting Strategy:</strong></p>
+<p>Suppose T types of features can be extracted from the thyroid ultrasound images. For a feature extraction method <em>k</em>, a classifier <em>h<sub>k</sub></em> can be trained on the dataset. The value predicted by the classifier for sample x is <em>h<sub>k</sub></em>(x). The final predicted classification result for sample x is expressed as follows, <em>h(x)=mode(h<sub>1</sub>(x),…,h<sub>T</sub>(x))</em>, where the <em>mode</em> is striving for the modal operation. If the votes of benign and malignance are the same on the condition that T is an even number, the sample is considered as malignancy.  </p>
+</li>
+</ul>
+<h1 id="A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis"><a href="#A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis" class="headerlink" title="A pre-trained convolutional neural network based method for thyroid nodule diagnosis"></a>A pre-trained convolutional neural network based method for thyroid nodule diagnosis</h1><p> <a href="https://www.sciencedirect.com/science/article/pii/S0041624X16301913" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0041624X16301913</a> </p>
+<ul>
+<li><p><strong>Abstract:</strong> </p>
+<p>In this study, we propose a hybrid method for thyroid nodule diagnosis, which is a fusion of two pre-trained convolutional neural networks (CNNs) with different convolutional layers and fully-connected layers.  </p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/4.jpg" alt="4"></p>
+</li>
+<li><p><strong>Data:</strong>  </p>
+<p>Each thyroid nodule has several longitudinal cutting maps or crosscutting maps. In total, 15,000 thyroid nodule images are obtained from different sonographic systems (Philips, GE-Healthcare, Esaote, Toshiba, Siemens, mindray and Hitachi) before surgery or FNA. The boundary of thyroid nodule in each image is manually delineated by physicians. So we can get 15,000 masks. These thyroid nodule images and their corresponding masks are in the same size and are both used for training our CNNs simultaneously. </p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/2.jpg" alt="2"></p>
+<p><strong>Combination of two different CNNs:</strong></p>
+<p> A special CNN based method is developed to classify thyroid nodules, which is a fusion of two different CNN architectures. Moreover, these two CNNs use a pre-training strategy for initialization to avoid local optimum and employ a multi-view strategy to improve the performance. </p>
+<p>To the best of our knowledge, different CNN architectures can learn different features, shallow network can be suitable for learning low-level features and deep network can take full advantage of learning high-level features. </p>
+<p>Our CNN architectures are pre-trained with a set of 1.3 million natural images from the ImageNet database. </p>
+<p>The image patches of size 225 * 225 cropped sampled randomly from thyroid nodule images are the inputs of our CNN based models, whose centers are in their corresponding masks.  </p>
+<p><strong>Split Dropout:</strong></p>
+<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/3.jpg" alt="3"></p>
+</li>
+</ul>
+
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yimo Liu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://yoursite.com/2019/10/30/ThyroidNoduleClassificationNote/" title="CNNs of Thyroid Nodule Classification">http://yoursite.com/2019/10/30/ThyroidNoduleClassificationNote/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+              <a href="/tags/Medical-Image/" rel="tag"># Medical Image</a>
+              <a href="/tags/CNN/" rel="tag"># CNN</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/My-Hello-World/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Yimo Liu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ludwig Liu">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/29/My-Hello-World/" class="post-title-link" itemprop="url">My Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-10-29 16:31:34" itemprop="dateCreated datePublished" datetime="2019-10-29T16:31:34+08:00">2019-10-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-30 09:14:24" itemprop="dateModified" datetime="2019-10-30T09:14:24+08:00">2019-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/personal-journal-or-something/" itemprop="url" rel="index">
-                    <span itemprop="name">personal journal or something</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2019/10/29/My-Hello-World/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/My-Hello-World/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>498</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>My first  blog on this website!</p>
-<p><img src="/2019/10/29/My-Hello-World/TheDarkSideOfTheMoon.jpg" alt="TheDarkSideOfTheMoon"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/29/My-Hello-World/#more" rel="contents">
-                Read more &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/10/29/My-Hello-World/" rel="next" title="My Hello World">
+                  <i class="fa fa-chevron-left"></i> My Hello World
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
       </footer>
+    
   </article>
   
   
@@ -423,12 +388,10 @@
 
   </div>
 
-  
-
-
 
           </div>
           
+    <div class="comments" id="comments"></div>
 
         </div>
           
@@ -453,6 +416,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features"><span class="nav-number">1.</span> <span class="nav-text">Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis"><span class="nav-number">2.</span> <span class="nav-text">A pre-trained convolutional neural network based method for thyroid nodule diagnosis</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -610,16 +574,6 @@
   
 
   
-    <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-        quicklink({
-          timeout: 3000,
-          priority: true,
-          ignores: [uri => uri.includes('#'),uri => uri == 'http://yoursite.com/',]
-        });
-        });
-    </script>
 
 
 <script>
