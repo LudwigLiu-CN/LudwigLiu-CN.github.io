@@ -894,6 +894,7 @@ pre .javascript .function {
 .comments {
   margin: 60px 20px 0;
   overflow: hidden;
+  background: rgba(255,255,255,0.8);
 }
 .comment-button-group {
   display: flex;
@@ -1178,7 +1179,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #2f57fa;
+  background: #32f9e5;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
