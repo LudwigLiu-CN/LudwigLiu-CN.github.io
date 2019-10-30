@@ -8,7 +8,7 @@
 
 <h1 id="Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features"><a href="#Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features" class="headerlink" title="Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features"></a><strong>Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features</strong></h1><p><a href="https://ieeexplore.ieee.org/abstract/document/7952290" target="_blank" rel="noopener">https://ieeexplore.ieee.org/abstract/document/7952290</a></p>
 <ul>
-<li><p>*<em>Abstract: *</em></p>
+<li><p><strong>Abstract:</strong></p>
 <p>Besides the general feature map extracted by the CNN, this work combines it with other hand-crafted features of the images. They integrated HOG, SIFT and LBP features with the high-level features extracted from CNNs and jointed them to form a one-dimensional vector.</p>
 <p><img src="/2019/10/30/ThyroidNoduleClassificationNote/1.gif" alt="1"></p>
 </li>
@@ -38,7 +38,8 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Deep Learning - Essay Notes</category>
+        <category>Deep Learning</category>
+        <category>Essay Notes</category>
       </categories>
       <tags>
         <tag>Deep Learning</tag>
