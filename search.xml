@@ -7,11 +7,8 @@
 <a id="more"></a>
 
 <h1 id="Efficient-Neural-Architecture-Search-via-Parameter-Sharing"><a href="#Efficient-Neural-Architecture-Search-via-Parameter-Sharing" class="headerlink" title="Efficient Neural Architecture Search via Parameter Sharing"></a>Efficient Neural Architecture Search via Parameter Sharing</h1><p> <a href="https://arxiv.org/abs/1802.03268" target="_blank" rel="noopener">https://arxiv.org/abs/1802.03268</a> </p>
-<ul>
-<li><p><strong>Abstract:</strong>  We propose Efficient Neural Architecture Search (ENAS), a fast and inexpensive approach for automatic model design.  </p>
-</li>
-<li><p><strong>Designing Recurrent Cells:</strong></p>
-<p>Our search space includes an exponential number of configurations. Specifically, if the recurrent cell has N nodes and we allow 4 activation functions (namely tanh, ReLU, identity, and sigmoid), then the search space has 4 N × N! configurations. </p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>We propose Efficient Neural Architecture Search (ENAS), a fast and inexpensive approach for automatic model design.  </p>
+<h2 id="Designing-Recurrent-Cells"><a href="#Designing-Recurrent-Cells" class="headerlink" title="Designing Recurrent Cells"></a>Designing Recurrent Cells</h2><p>Our search space includes an exponential number of configurations. Specifically, if the recurrent cell has N nodes and we allow 4 activation functions (namely tanh, ReLU, identity, and sigmoid), then the search space has 4 N × N! configurations. </p>
 <p><img src="/2019/11/02/ENAS/1.PNG" alt="1"></p>
 <ol>
 <li>At node 1: The controller first samples an activation function. In our example, the controller chooses the tanh activation function, which means that node 1 of the recurrent cell should compute h<sub>1</sub> = tanh (x<sub>t</sub> · W<sup>(x)</sup> + h<sub>t−1</sub> · W<sub>1</sub><sup>(h)</sup>  ). </li>
@@ -20,15 +17,11 @@
 <li>At node 4: The controller again samples a previous index and an activation function. In our example, it chooses the previous index 1 and the activation function tanh, leading to h4 = tanh (h<sub>1</sub> · W<sub>4,1</sub><sup>(h)</sup>). </li>
 <li>For the output, we simply average all the loose ends, i.e. the nodes that are not selected as inputs to any other nodes. In our example, since the indices 3 and 4 were never sampled to be the input for any node, the recurrent cell uses their average (h<sub>3</sub> + h<sub>4</sub>)/2 as its output. In other words, h<sub>t</sub> = (h<sub>3</sub> + h<sub>4</sub>)/2. </li>
 </ol>
-<p><strong>Controller:</strong></p>
-<p>ENAS’s controller is an RNN that decides: 1) which edges are activated and 2) which computations are performed at each node in the DAG. Our controller network is an LSTM with 100 hidden units.</p>
-<p><strong>Training ENAS and Deriving Architecture:</strong> </p>
-<p>The training procedure of ENAS consists of two interleaving phases. The first phase trains ω, the shared parameters of the child models, on a whole pass through the training data set. The second phase trains θ, the parameters of the controller LSTM, for a fixed number of steps, typically set to 2000 in our experiments.</p>
-<p><strong>Designing Convolutional Networks:</strong></p>
-<p>The controller RNN also samples two sets of decisions at each decision block: 1) what previous nodes to connect to and 2) what computation operation to use.</p>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>ENAS’s controller is an RNN that decides: 1) which edges are activated and 2) which computations are performed at each node in the DAG. Our controller network is an LSTM with 100 hidden units.</p>
+<h2 id="Training-ENAS-and-Deriving-Architecture"><a href="#Training-ENAS-and-Deriving-Architecture" class="headerlink" title="Training ENAS and Deriving Architecture"></a>Training ENAS and Deriving Architecture</h2><p>The training procedure of ENAS consists of two interleaving phases. The first phase trains ω, the shared parameters of the child models, on a whole pass through the training data set. The second phase trains θ, the parameters of the controller LSTM, for a fixed number of steps, typically set to 2000 in our experiments.</p>
+<h2 id="Designing-Convolutional-Networks"><a href="#Designing-Convolutional-Networks" class="headerlink" title="Designing Convolutional Networks"></a>Designing Convolutional Networks</h2><p>The controller RNN also samples two sets of decisions at each decision block: 1) what previous nodes to connect to and 2) what computation operation to use.</p>
 <p><img src="/2019/11/02/ENAS/2.PNG" alt="2"></p>
-<p><strong>Designing Convolutional Cells:</strong> </p>
-<p>Rather than designing the entire convolutional network, one can design smaller modules and then connect them together to form a network. </p>
+<h2 id="Designing-Convolutional-Cells"><a href="#Designing-Convolutional-Cells" class="headerlink" title="Designing Convolutional Cells"></a>Designing Convolutional Cells</h2><p>Rather than designing the entire convolutional network, one can design smaller modules and then connect them together to form a network. </p>
 <p><img src="/2019/11/02/ENAS/3.PNG" alt="3"></p>
 <ol>
 <li>Nodes 1, 2 are input nodes, so no decisions are needed for them. Let h1, h2 be the outputs of these nodes. </li>
@@ -36,13 +29,9 @@
 <li>At node 4: the controller samples node 3, node 1, avg pool 3x3, and sep conv 3x3. This means that h4 = avg pool 3x3(h3) + sep conv 3x3(h1).</li>
 <li>Since all nodes but h4 were used as inputs to at least another node, the only loose end, h4, is treated as the cell’s output. If there are multiple loose ends, they will be concatenated along the depth dimension to form the cell’s output.  </li>
 </ol>
-</li>
-<li><p><strong>P.S.</strong></p>
-<p>Actually, after reading this paper I only have the slightest understanding of this Net Work, and as for the details like what’s really going on when training, and how do those parameters in one unit change  and cast influence on another unit, they still seem quite unclear to me.</p>
+<h2 id="P-S"><a href="#P-S" class="headerlink" title="P.S."></a>P.S.</h2><p>Actually, after reading this paper I only have the slightest understanding of this Net Work, and as for the details like what’s really going on when training, and how do those parameters in one unit change  and cast influence on another unit, they still seem quite unclear to me.</p>
 <p> <a href="https://github.com/shibuiwilliam/ENAS-Keras" target="_blank" rel="noopener">https://github.com/shibuiwilliam/ENAS-Keras</a> This is Keras implementation of ENAS. I ran the file  <a href="https://github.com/shibuiwilliam/ENAS-Keras/blob/master/ENAS_Keras_MNIST.ipynb" target="_blank" rel="noopener">ENAS_Keras_MNIST.ipynb</a> on my workstation with 2 GPUs of 1080ti, and found that it requires days to finish running. Then, I ran it on my data set of thyroid nodules, it still finished only 1/3 of the work load in 24h. Apparently, it’s unrealistic to use this method to build my network for its training price is too high to afford. But still this method could come handy in the future.</p>
 <p>Besides, while collecting information about this method, I find something called auto-Keras, which is based on ENAS. It can figure out a suitable network architecture for the data you input, and then you can do some improving work based on it. It’s an open source project. I think it’s an excellent way to start a new network. I will do some digging about it in the future days.</p>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>Deep Learning</category>
@@ -60,35 +49,20 @@
 <a id="more"></a>
 
 <h1 id="Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features"><a href="#Classification-of-thyroid-nodules-in-ultrasound-images-using-deep-model-based-transfer-learning-and-hybrid-features" class="headerlink" title="Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features"></a><strong>Classification of thyroid nodules in ultrasound images using deep model based transfer learning and hybrid features</strong></h1><p><a href="https://ieeexplore.ieee.org/abstract/document/7952290" target="_blank" rel="noopener">https://ieeexplore.ieee.org/abstract/document/7952290</a></p>
-<ul>
-<li><p><strong>Abstract:</strong></p>
-<p>Besides the general feature map extracted by the CNN, this work combines it with other hand-crafted features of the images. They integrated HOG, SIFT and LBP features with the high-level features extracted from CNNs and jointed them to form a one-dimensional vector.</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Besides the general feature map extracted by the CNN, this work combines it with other hand-crafted features of the images. They integrated HOG, SIFT and LBP features with the high-level features extracted from CNNs and jointed them to form a one-dimensional vector.</p>
 <p><img src="/2019/10/30/ThyroidNoduleClassificationNote/1.gif" alt="1"></p>
-</li>
-<li><p><strong>Feature selection strategy:</strong></p>
-<p>The feature map extracted from the VGG-F model has 4096 dimensions. With 144 dimensions’ HOG features, 26 dimensions’ LBP features and 512 dimensions’ VLAD features, the total count of feature dimensions we have is 4778. In order to reducing the redundancies and irrelevancies among feature vector, feature selection is required. The feature selection standard is based on sorting the differences of benign samples and malignant samples:<br>$$<br>diff_k = \vert\frac{1}{N_{MB}}\sum_{i=1}^{N_{MB}}{v_{ik}} - \frac{1}{N_{MM}}\sum_{i=1}^{N_{MM}}{v_{ik}}\vert \quad (k = 1, 2,…N)<br>$$<br>Where, <em>N<sub>MB</sub></em> and <em>N<sub>MM</sub></em> are the number of benign and malignant nodules in the training set, <em>v<sub>ik</sub></em> is the <em>k</em>th dimensional feature of the <em>i</em>th image. The top 1000 features with the largest differences will be chosen as our final features for the thyroid nodule classification. </p>
-<p><strong>Positive-Sample-First Majority Voting Strategy:</strong></p>
-<p>Suppose T types of features can be extracted from the thyroid ultrasound images. For a feature extraction method <em>k</em>, a classifier <em>h<sub>k</sub></em> can be trained on the dataset. The value predicted by the classifier for sample x is <em>h<sub>k</sub></em>(x). The final predicted classification result for sample x is expressed as follows, <em>h(x)=mode(h<sub>1</sub>(x),…,h<sub>T</sub>(x))</em>, where the <em>mode</em> is striving for the modal operation. If the votes of benign and malignance are the same on the condition that T is an even number, the sample is considered as malignancy.  </p>
-</li>
-</ul>
+<h2 id="Feature-selection-strategy"><a href="#Feature-selection-strategy" class="headerlink" title="Feature selection strategy"></a>Feature selection strategy</h2><p>The feature map extracted from the VGG-F model has 4096 dimensions. With 144 dimensions’ HOG features, 26 dimensions’ LBP features and 512 dimensions’ VLAD features, the total count of feature dimensions we have is 4778. In order to reducing the redundancies and irrelevancies among feature vector, feature selection is required. The feature selection standard is based on sorting the differences of benign samples and malignant samples:<br>$$<br>diff_k = \vert\frac{1}{N_{MB}}\sum_{i=1}^{N_{MB}}{v_{ik}} - \frac{1}{N_{MM}}\sum_{i=1}^{N_{MM}}{v_{ik}}\vert \quad (k = 1, 2,…N)<br>$$<br>Where, <em>N<sub>MB</sub></em> and <em>N<sub>MM</sub></em> are the number of benign and malignant nodules in the training set, <em>v<sub>ik</sub></em> is the <em>k</em>th dimensional feature of the <em>i</em>th image. The top 1000 features with the largest differences will be chosen as our final features for the thyroid nodule classification. </p>
+<h2 id="Positive-Sample-First-Majority-Voting-Strategy"><a href="#Positive-Sample-First-Majority-Voting-Strategy" class="headerlink" title="Positive-Sample-First Majority Voting Strategy"></a>Positive-Sample-First Majority Voting Strategy</h2><p>Suppose T types of features can be extracted from the thyroid ultrasound images. For a feature extraction method <em>k</em>, a classifier <em>h<sub>k</sub></em> can be trained on the dataset. The value predicted by the classifier for sample x is <em>h<sub>k</sub></em>(x). The final predicted classification result for sample x is expressed as follows, <em>h(x)=mode(h<sub>1</sub>(x),…,h<sub>T</sub>(x))</em>, where the <em>mode</em> is striving for the modal operation. If the votes of benign and malignance are the same on the condition that T is an even number, the sample is considered as malignancy.  </p>
 <h1 id="A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis"><a href="#A-pre-trained-convolutional-neural-network-based-method-for-thyroid-nodule-diagnosis" class="headerlink" title="A pre-trained convolutional neural network based method for thyroid nodule diagnosis"></a>A pre-trained convolutional neural network based method for thyroid nodule diagnosis</h1><p> <a href="https://www.sciencedirect.com/science/article/pii/S0041624X16301913" target="_blank" rel="noopener">https://www.sciencedirect.com/science/article/pii/S0041624X16301913</a> </p>
-<ul>
-<li><p><strong>Abstract:</strong> </p>
-<p>In this study, we propose a hybrid method for thyroid nodule diagnosis, which is a fusion of two pre-trained convolutional neural networks (CNNs) with different convolutional layers and fully-connected layers.  </p>
+<h2 id="Abstract-1"><a href="#Abstract-1" class="headerlink" title="Abstract"></a>Abstract</h2><p>In this study, we propose a hybrid method for thyroid nodule diagnosis, which is a fusion of two pre-trained convolutional neural networks (CNNs) with different convolutional layers and fully-connected layers.  </p>
 <p><img src="/2019/10/30/ThyroidNoduleClassificationNote/4.jpg" alt="4"></p>
-</li>
-<li><p><strong>Data:</strong>  </p>
-<p>Each thyroid nodule has several longitudinal cutting maps or crosscutting maps. In total, 15,000 thyroid nodule images are obtained from different sonographic systems (Philips, GE-Healthcare, Esaote, Toshiba, Siemens, mindray and Hitachi) before surgery or FNA. The boundary of thyroid nodule in each image is manually delineated by physicians. So we can get 15,000 masks. These thyroid nodule images and their corresponding masks are in the same size and are both used for training our CNNs simultaneously. </p>
+<h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p>Each thyroid nodule has several longitudinal cutting maps or crosscutting maps. In total, 15,000 thyroid nodule images are obtained from different sonographic systems (Philips, GE-Healthcare, Esaote, Toshiba, Siemens, mindray and Hitachi) before surgery or FNA. The boundary of thyroid nodule in each image is manually delineated by physicians. So we can get 15,000 masks. These thyroid nodule images and their corresponding masks are in the same size and are both used for training our CNNs simultaneously. </p>
 <p><img src="/2019/10/30/ThyroidNoduleClassificationNote/2.jpg" alt="2"></p>
-<p><strong>Combination of two different CNNs:</strong></p>
-<p> A special CNN based method is developed to classify thyroid nodules, which is a fusion of two different CNN architectures. Moreover, these two CNNs use a pre-training strategy for initialization to avoid local optimum and employ a multi-view strategy to improve the performance. </p>
+<h2 id="Combination-of-two-different-CNNs"><a href="#Combination-of-two-different-CNNs" class="headerlink" title="Combination of two different CNNs"></a>Combination of two different CNNs</h2><p> A special CNN based method is developed to classify thyroid nodules, which is a fusion of two different CNN architectures. Moreover, these two CNNs use a pre-training strategy for initialization to avoid local optimum and employ a multi-view strategy to improve the performance. </p>
 <p>To the best of our knowledge, different CNN architectures can learn different features, shallow network can be suitable for learning low-level features and deep network can take full advantage of learning high-level features. </p>
 <p>Our CNN architectures are pre-trained with a set of 1.3 million natural images from the ImageNet database. </p>
 <p>The image patches of size 225 * 225 cropped sampled randomly from thyroid nodule images are the inputs of our CNN based models, whose centers are in their corresponding masks.  </p>
-<p><strong>Split Dropout:</strong></p>
-<p><img src="/2019/10/30/ThyroidNoduleClassificationNote/3.jpg" alt="3"></p>
-</li>
-</ul>
+<h2 id="Split-Dropout"><a href="#Split-Dropout" class="headerlink" title="Split Dropout"></a>Split Dropout</h2><p><img src="/2019/10/30/ThyroidNoduleClassificationNote/3.jpg" alt="3"></p>
 ]]></content>
       <categories>
         <category>Deep Learning</category>
