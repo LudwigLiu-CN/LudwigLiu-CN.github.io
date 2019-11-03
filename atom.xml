@@ -5,9 +5,9 @@
   <subtitle>All in all you&#39;re just another brick in the wall.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://ludwigliu-cn.github.io/"/>
   <updated>2019-11-02T08:33:50.115Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://ludwigliu-cn.github.io/</id>
   
   <author>
     <name>Yimo Liu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Notes of ENAS</title>
-    <link href="http://yoursite.com/2019/11/02/ENAS/"/>
-    <id>http://yoursite.com/2019/11/02/ENAS/</id>
+    <link href="https://ludwigliu-cn.github.io/2019/11/02/ENAS/"/>
+    <id>https://ludwigliu-cn.github.io/2019/11/02/ENAS/</id>
     <published>2019-11-02T07:32:36.000Z</published>
     <updated>2019-11-02T08:33:50.115Z</updated>
     
@@ -32,21 +32,21 @@
     </summary>
     
     
-      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="https://ludwigliu-cn.github.io/categories/Deep-Learning/"/>
     
-      <category term="Essay Notes" scheme="http://yoursite.com/categories/Deep-Learning/Essay-Notes/"/>
+      <category term="Essay Notes" scheme="https://ludwigliu-cn.github.io/categories/Deep-Learning/Essay-Notes/"/>
     
     
-      <category term="Deep Learning" scheme="http://yoursite.com/tags/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="https://ludwigliu-cn.github.io/tags/Deep-Learning/"/>
     
-      <category term="CNN" scheme="http://yoursite.com/tags/CNN/"/>
+      <category term="CNN" scheme="https://ludwigliu-cn.github.io/tags/CNN/"/>
     
   </entry>
   
   <entry>
     <title>CNNs of Thyroid Nodule Classification</title>
-    <link href="http://yoursite.com/2019/10/30/ThyroidNoduleClassificationNote/"/>
-    <id>http://yoursite.com/2019/10/30/ThyroidNoduleClassificationNote/</id>
+    <link href="https://ludwigliu-cn.github.io/2019/10/30/ThyroidNoduleClassificationNote/"/>
+    <id>https://ludwigliu-cn.github.io/2019/10/30/ThyroidNoduleClassificationNote/</id>
     <published>2019-10-30T05:22:33.000Z</published>
     <updated>2019-11-02T08:34:14.919Z</updated>
     
@@ -59,23 +59,23 @@
     </summary>
     
     
-      <category term="Deep Learning" scheme="http://yoursite.com/categories/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="https://ludwigliu-cn.github.io/categories/Deep-Learning/"/>
     
-      <category term="Essay Notes" scheme="http://yoursite.com/categories/Deep-Learning/Essay-Notes/"/>
+      <category term="Essay Notes" scheme="https://ludwigliu-cn.github.io/categories/Deep-Learning/Essay-Notes/"/>
     
     
-      <category term="Deep Learning" scheme="http://yoursite.com/tags/Deep-Learning/"/>
+      <category term="Deep Learning" scheme="https://ludwigliu-cn.github.io/tags/Deep-Learning/"/>
     
-      <category term="CNN" scheme="http://yoursite.com/tags/CNN/"/>
+      <category term="CNN" scheme="https://ludwigliu-cn.github.io/tags/CNN/"/>
     
-      <category term="Medical Image" scheme="http://yoursite.com/tags/Medical-Image/"/>
+      <category term="Medical Image" scheme="https://ludwigliu-cn.github.io/tags/Medical-Image/"/>
     
   </entry>
   
   <entry>
     <title>My Hello World</title>
-    <link href="http://yoursite.com/2019/10/29/My-Hello-World/"/>
-    <id>http://yoursite.com/2019/10/29/My-Hello-World/</id>
+    <link href="https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/"/>
+    <id>https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/</id>
     <published>2019-10-29T08:31:34.000Z</published>
     <updated>2019-10-30T01:14:24.783Z</updated>
     
@@ -89,12 +89,12 @@
     </summary>
     
     
-      <category term="personal journal or something" scheme="http://yoursite.com/categories/personal-journal-or-something/"/>
+      <category term="personal journal or something" scheme="https://ludwigliu-cn.github.io/categories/personal-journal-or-something/"/>
     
     
-      <category term="hello world" scheme="http://yoursite.com/tags/hello-world/"/>
+      <category term="hello world" scheme="https://ludwigliu-cn.github.io/tags/hello-world/"/>
     
-      <category term="daily" scheme="http://yoursite.com/tags/daily/"/>
+      <category term="daily" scheme="https://ludwigliu-cn.github.io/tags/daily/"/>
     
   </entry>
   
