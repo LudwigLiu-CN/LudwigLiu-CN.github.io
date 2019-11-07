@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Code for mathematic symbols in Latex (and mark down)</title>
+    <url>/2019/11/07/MarkDownMath/</url>
+    <content><![CDATA[<p>When editing some documents with Latex( or mark down), it often happens to me that I need to write some math functions or  Equations but don’t know the according code for some math mathematical symbols. It’s a waste of time to search such information online, So I record it here.</p>
+<a id="more"></a>
+
+<p><img src="/2019/11/07/MarkDownMath/1.png" alt="1"></p>
+]]></content>
+      <categories>
+        <category>documentation skill - Latex</category>
+      </categories>
+      <tags>
+        <tag>mark down</tag>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Notes of ENAS</title>
     <url>/2019/11/02/ENAS/</url>
     <content><![CDATA[<p>ENAS is introduced by my mentor of my research on the classification of malignant thyroid nodules. This could be a good way to set the basic architecture of our net work. So I read this paper.</p>
