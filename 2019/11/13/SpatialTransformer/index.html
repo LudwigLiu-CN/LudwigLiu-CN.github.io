@@ -52,20 +52,25 @@
   };
 </script>
 
-  <meta name="description" content="My first  blog on this website!">
-<meta name="keywords" content="hello world,daily">
+  <meta name="description" content="Medical images are tricky to handle, especially when it comes to dealing with single-channel CT images. Regular CNN architecture can hardly capture the useful features of those images, so I think it w">
+<meta name="keywords" content="Deep Learning,Network Unit">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My Hello World">
-<meta property="og:url" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;My-Hello-World&#x2F;index.html">
+<meta property="og:title" content="Spatial Transformer">
+<meta property="og:url" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;index.html">
 <meta property="og:site_name" content="Ludwig Liu">
-<meta property="og:description" content="My first  blog on this website!">
+<meta property="og:description" content="Medical images are tricky to handle, especially when it comes to dealing with single-channel CT images. Regular CNN architecture can hardly capture the useful features of those images, so I think it w">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;My-Hello-World&#x2F;TheDarkSideOfTheMoon.jpg">
-<meta property="og:updated_time" content="2019-10-30T01:14:24.783Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;1.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;2.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;3.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;4.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;5.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;6.PNG">
+<meta property="og:updated_time" content="2019-11-13T06:56:42.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;10&#x2F;29&#x2F;My-Hello-World&#x2F;TheDarkSideOfTheMoon.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;13&#x2F;SpatialTransformer&#x2F;1.png">
 
-<link rel="canonical" href="https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/">
+<link rel="canonical" href="https://ludwigliu-cn.github.io/2019/11/13/SpatialTransformer/">
 
 
 <script id="page-configurations">
@@ -79,7 +84,7 @@
   };
 </script>
 
-  <title>My Hello World | Ludwig Liu</title>
+  <title>Spatial Transformer | Ludwig Liu</title>
   
 
 
@@ -215,7 +220,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/">
+    <link itemprop="mainEntityOfPage" href="https://ludwigliu-cn.github.io/2019/11/13/SpatialTransformer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -228,7 +233,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          My Hello World
+          Spatial Transformer
         </h1>
 
         <div class="post-meta">
@@ -237,24 +242,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-10-29 16:31:34" itemprop="dateCreated datePublished" datetime="2019-10-29T16:31:34+08:00">2019-10-29</time>
+              <time title="Created: 2019-11-13 13:54:55 / Modified: 14:56:42" itemprop="dateCreated datePublished" datetime="2019-11-13T13:54:55+08:00">2019-11-13</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-30 09:14:24" itemprop="dateModified" datetime="2019-10-30T09:14:24+08:00">2019-10-30</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/personal-journal-or-something/" itemprop="url" rel="index">
-                    <span itemprop="name">personal journal or something</span>
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/Essay-Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Essay Notes</span>
                   </a>
                 </span>
             </span>
@@ -275,8 +280,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/10/29/My-Hello-World/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/29/My-Hello-World/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/11/13/SpatialTransformer/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/13/SpatialTransformer/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -286,14 +291,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>498</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -305,13 +310,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>My first  blog on this website!</p>
-<p><img src="/2019/10/29/My-Hello-World/TheDarkSideOfTheMoon.jpg" alt="TheDarkSideOfTheMoon"></p>
+        <p>Medical images are tricky to handle, especially when it comes to dealing with single-channel CT images. Regular CNN architecture can hardly capture the useful features of those images, so I think it would be effective to utilize spatial transformer in our model. Here’s some note about this unit.</p>
+<p><img src="/2019/11/13/SpatialTransformer/1.png" alt="1"></p>
 <a id="more"></a>
 
-<p>My first  blog on this website! As a matter of fact, I’ve been thinking about this for a long time. But not until a friend of mine introduce Hexo to me did I realize how easy it actually is to start my own blog. </p>
-<p>So now, I’m here ready to record something of my life, meaningful or not. Mainly my blogs will be about coding or computer skills, but once in a while I’d like to record some other fun stuffs here, you know, something like ‘The Dark Side of the Moon’ by Pink Floyd I’m listening to now, and rock music, basketball, video games and so on.</p>
-<p>And also, thanks for visiting my blog!</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>In this work we introduce a new learnable module, the <em>Spatial Transformer</em>, which explicitly allows the spatial manipulation of data within the network.</p>
+<img src="/2019/11/13/SpatialTransformer/2.PNG" alt="2" style="zoom: 80%;">
+
+<h2 id="Basic-Structure"><a href="#Basic-Structure" class="headerlink" title="Basic Structure"></a>Basic Structure</h2><p>The spatial transformer mechanism is split into three parts, shown in Fig. 2. In order of computation, fifirst a <em>localization network</em> takes the input feature map, and through a number of hidden layers outputs the parameters of the spatial transformation that should be applied to the feature map – this gives a transformation conditional on the input. Then, the predicted transformation parameters are used to create a sampling grid, which is a set of points where the input map should be sampled to produce the transformed output. This is done by the <em>grid generator</em>. Finally, the feature map and the sampling grid are taken as inputs to the <em>sampler</em>, producing the output map sampled from the input at the grid points.<img src="/2019/11/13/SpatialTransformer/3.PNG" alt="3" style="zoom:80%;"></p>
+<h2 id="Localization-Network"><a href="#Localization-Network" class="headerlink" title="Localization Network"></a>Localization Network</h2><p>The localization network function <em>f</em><sub>loc</sub> () can take any form, such as a fully-connected network or a convolutional network, but should include a final regression layer to produce the transformation parameters <em>θ</em>. The size of <em>θ</em> can vary depending on the transformation type that is parameterized,</p>
+<p><em>e.g.</em> for an affine transformation <em>θ</em> is 6-dimensional as in (1). Affine transformation:</p>
+<img src="/2019/11/13/SpatialTransformer/4.PNG" alt="4" style="zoom:67%;">
+
+<h2 id="Parameterized-Sampling-Grid"><a href="#Parameterized-Sampling-Grid" class="headerlink" title="Parameterized Sampling Grid"></a>Parameterized Sampling Grid</h2><p>We need to find the values of the points according to the coordinates of V, which are already set since the scale of it has been defined. In this affine case, the pointwise transformation is:</p>
+<img src="/2019/11/13/SpatialTransformer/5.PNG" alt="5" style="zoom: 67%;">
+
+<p>where (x<sub>i</sub><sup>t</sup>, y<sub>i</sub><sup>y</sup>) are the target coordinates of the regular grid in the output feature map, (x<sub>i</sub><sup>s</sup>, y<sub>i</sub><sup>t</sup>) are the source coordinates in the input feature map that define the sample points, and Aθ is the affine transformation matrix.</p>
+<img src="/2019/11/13/SpatialTransformer/6.PNG" alt="6" style="zoom: 80%;">
+
+<p>The transformation <em>T<sub>θ</sub></em> can also be more general, such as a plane projective transformation with 8 parameters, piece-wise affine, or a thin plate spline.</p>
+<h2 id="Differentiable-Image-Sampling"><a href="#Differentiable-Image-Sampling" class="headerlink" title="Differentiable Image Sampling"></a>Differentiable Image Sampling</h2><p>The coordinates we get from the grid above could be decimal, besides we can’t simply use the value from U for the values around this coordinate should also be taken into consideration, and the formula to do this is:<br>$$<br>V_i^c = \Sigma_n^H\Sigma_m^WU_{nm}^ck(x_i^s-m;\Phi_y)k(u_i^s-n;\Phi_y)\ \ \ \ ∀i\epsilon[1…H’W’] \ ∀c\epsilon[1…C]<br>$$<br>where <em>δ</em>() is the Kronecker delta function. A bilinear sampling kernel can be used, giving<br>$$<br>V_i^c = \Sigma_n^H\Sigma_m^WU_{nm}^c max(0,1-|x_i^s-m|)max(0,1-|y_i^s-n|)<br>$$</p>
+<h2 id="Spatial-Transformer-Network"><a href="#Spatial-Transformer-Network" class="headerlink" title="Spatial Transformer Network"></a>Spatial Transformer Network</h2><p> The combination of the localization network, grid generator, and sampler form a spatial transformer. This is a self-contained module which can be dropped into a CNN architecture at any point, and in any number, giving rise to <em>spatial transformer networks</em>.</p>
 
     </div>
 
@@ -327,7 +346,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/" title="My Hello World">https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/</a>
+    <a href="https://ludwigliu-cn.github.io/2019/11/13/SpatialTransformer/" title="Spatial Transformer">https://ludwigliu-cn.github.io/2019/11/13/SpatialTransformer/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -338,22 +357,22 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hello-world/" rel="tag"># hello world</a>
-              <a href="/tags/daily/" rel="tag"># daily</a>
+              <a href="/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+              <a href="/tags/Network-Unit/" rel="tag"># Network Unit</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/07/MarkDownMath/" rel="next" title="Code for mathematic symbols in Latex (and mark down)">
+                  <i class="fa fa-chevron-left"></i> Code for mathematic symbols in Latex (and mark down)
+                </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/10/30/ThyroidNoduleClassificationNote/" rel="prev" title="CNNs of Thyroid Nodule Classification">
-                  CNNs of Thyroid Nodule Classification <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -393,6 +412,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Structure"><span class="nav-number">2.</span> <span class="nav-text">Basic Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Localization-Network"><span class="nav-number">3.</span> <span class="nav-text">Localization Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parameterized-Sampling-Grid"><span class="nav-number">4.</span> <span class="nav-text">Parameterized Sampling Grid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Differentiable-Image-Sampling"><span class="nav-number">5.</span> <span class="nav-text">Differentiable Image Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spatial-Transformer-Network"><span class="nav-number">6.</span> <span class="nav-text">Spatial Transformer Network</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -550,6 +570,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 

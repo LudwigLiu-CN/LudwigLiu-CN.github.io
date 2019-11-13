@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Spatial Transformer</title>
+    <url>/2019/11/13/SpatialTransformer/</url>
+    <content><![CDATA[<p>Medical images are tricky to handle, especially when it comes to dealing with single-channel CT images. Regular CNN architecture can hardly capture the useful features of those images, so I think it would be effective to utilize spatial transformer in our model. Here’s some note about this unit.</p>
+<p><img src="/2019/11/13/SpatialTransformer/1.png" alt="1"></p>
+<a id="more"></a>
+
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>In this work we introduce a new learnable module, the <em>Spatial Transformer</em>, which explicitly allows the spatial manipulation of data within the network.</p>
+<img src="/2019/11/13/SpatialTransformer/2.PNG" alt="2" style="zoom: 80%;">
+
+<h2 id="Basic-Structure"><a href="#Basic-Structure" class="headerlink" title="Basic Structure"></a>Basic Structure</h2><p>The spatial transformer mechanism is split into three parts, shown in Fig. 2. In order of computation, fifirst a <em>localization network</em> takes the input feature map, and through a number of hidden layers outputs the parameters of the spatial transformation that should be applied to the feature map – this gives a transformation conditional on the input. Then, the predicted transformation parameters are used to create a sampling grid, which is a set of points where the input map should be sampled to produce the transformed output. This is done by the <em>grid generator</em>. Finally, the feature map and the sampling grid are taken as inputs to the <em>sampler</em>, producing the output map sampled from the input at the grid points.<img src="/2019/11/13/SpatialTransformer/3.PNG" alt="3" style="zoom:80%;"></p>
+<h2 id="Localization-Network"><a href="#Localization-Network" class="headerlink" title="Localization Network"></a>Localization Network</h2><p>The localization network function <em>f</em><sub>loc</sub> () can take any form, such as a fully-connected network or a convolutional network, but should include a final regression layer to produce the transformation parameters <em>θ</em>. The size of <em>θ</em> can vary depending on the transformation type that is parameterized,</p>
+<p><em>e.g.</em> for an affine transformation <em>θ</em> is 6-dimensional as in (1). Affine transformation:</p>
+<img src="/2019/11/13/SpatialTransformer/4.PNG" alt="4" style="zoom:67%;">
+
+<h2 id="Parameterized-Sampling-Grid"><a href="#Parameterized-Sampling-Grid" class="headerlink" title="Parameterized Sampling Grid"></a>Parameterized Sampling Grid</h2><p>We need to find the values of the points according to the coordinates of V, which are already set since the scale of it has been defined. In this affine case, the pointwise transformation is:</p>
+<img src="/2019/11/13/SpatialTransformer/5.PNG" alt="5" style="zoom: 67%;">
+
+<p>where (x<sub>i</sub><sup>t</sup>, y<sub>i</sub><sup>y</sup>) are the target coordinates of the regular grid in the output feature map, (x<sub>i</sub><sup>s</sup>, y<sub>i</sub><sup>t</sup>) are the source coordinates in the input feature map that define the sample points, and Aθ is the affine transformation matrix.</p>
+<img src="/2019/11/13/SpatialTransformer/6.PNG" alt="6" style="zoom: 80%;">
+
+<p>The transformation <em>T<sub>θ</sub></em> can also be more general, such as a plane projective transformation with 8 parameters, piece-wise affine, or a thin plate spline.</p>
+<h2 id="Differentiable-Image-Sampling"><a href="#Differentiable-Image-Sampling" class="headerlink" title="Differentiable Image Sampling"></a>Differentiable Image Sampling</h2><p>The coordinates we get from the grid above could be decimal, besides we can’t simply use the value from U for the values around this coordinate should also be taken into consideration, and the formula to do this is:<br>$$<br>V_i^c = \Sigma_n^H\Sigma_m^WU_{nm}^ck(x_i^s-m;\Phi_y)k(u_i^s-n;\Phi_y)\ \ \ \ ∀i\epsilon[1…H’W’] \ ∀c\epsilon[1…C]<br>$$<br>where <em>δ</em>() is the Kronecker delta function. A bilinear sampling kernel can be used, giving<br>$$<br>V_i^c = \Sigma_n^H\Sigma_m^WU_{nm}^c max(0,1-|x_i^s-m|)max(0,1-|y_i^s-n|)<br>$$</p>
+<h2 id="Spatial-Transformer-Network"><a href="#Spatial-Transformer-Network" class="headerlink" title="Spatial Transformer Network"></a>Spatial Transformer Network</h2><p> The combination of the localization network, grid generator, and sampler form a spatial transformer. This is a self-contained module which can be dropped into a CNN architecture at any point, and in any number, giving rise to <em>spatial transformer networks</em>.</p>
+]]></content>
+      <categories>
+        <category>Deep Learning</category>
+        <category>Essay Notes</category>
+      </categories>
+      <tags>
+        <tag>Deep Learning</tag>
+        <tag>Network Unit</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Code for mathematic symbols in Latex (and mark down)</title>
     <url>/2019/11/07/MarkDownMath/</url>
     <content><![CDATA[<p>When editing some documents with Latex( or mark down), it often happens to me that I need to write some math functions or  Equations but don’t know the according code for some math mathematical symbols. It’s a waste of time to search such information online, So I record it here.</p>
@@ -9,7 +43,8 @@
 <p><img src="/2019/11/07/MarkDownMath/1.png" alt="1"></p>
 ]]></content>
       <categories>
-        <category>documentation skill - Latex</category>
+        <category>documentation skill</category>
+        <category>Latex</category>
       </categories>
       <tags>
         <tag>mark down</tag>
