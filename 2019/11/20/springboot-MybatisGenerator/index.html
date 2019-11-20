@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Ludwig Liu" type="application/atom+xml">
+  <meta name="google-site-verification" content="H23TVOTdnLNsRFV3Tzq5a-PXFWfZouoVLJV0wJLANgs" />
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="When developing my Java course project, I learned to deploy Mybatis generator on springboot framework to automatically generate java classes from database(mysql). I find it may be useful in the future">
+<meta name="keywords" content="Springboot,Java,Mybatis,IntelliJ IDEA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot+MybatisGenerator">
+<meta property="og:url" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;index.html">
+<meta property="og:site_name" content="Ludwig Liu">
+<meta property="og:description" content="When developing my Java course project, I learned to deploy Mybatis generator on springboot framework to automatically generate java classes from database(mysql). I find it may be useful in the future">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;1.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;2.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;3.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;4.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;5.PNG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;6.JPG">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;7.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;8.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;10.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;9.jpg">
+<meta property="og:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;11.PNG">
+<meta property="og:updated_time" content="2019-11-20T07:07:37.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;ludwigliu-cn.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;springboot-MybatisGenerator&#x2F;1.jpg">
+
+<link rel="canonical" href="https://ludwigliu-cn.github.io/2019/11/20/springboot-MybatisGenerator/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Springboot+MybatisGenerator | Ludwig Liu</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+	<a href="https://github.com/LudwigLiu-CN" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Ludwig Liu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">All in all you're just another brick in the wall.</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ludwigliu-cn.github.io/2019/11/20/springboot-MybatisGenerator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Yimo Liu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ludwig Liu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Springboot+MybatisGenerator
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-20 11:06:52 / Modified: 15:07:37" itemprop="dateCreated datePublished" datetime="2019-11-20T11:06:52+08:00">2019-11-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">Springboot</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2019/11/20/springboot-MybatisGenerator/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/20/springboot-MybatisGenerator/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>8.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>8 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>When developing my Java course project, I learned to deploy Mybatis generator on springboot framework to automatically generate java classes from database(mysql). I find it may be useful in the future so I record it here.</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/1.jpg" alt="1"></p>
+<a id="more"></a>
+
+<h1 id="Project-Initialization"><a href="#Project-Initialization" class="headerlink" title="Project Initialization"></a>Project Initialization</h1><p>I use the spring initializer provided by IntelliJ IDEA IDE to initialize my springboot project. Watch out for this, you need to select those dependency settings to get full functions of the initializer. JDBC API and MyBatis are universally needed, and the database driver should be decided by your database type.(Mine is MySQL so I select MySQL driver)</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/2.PNG" alt="2"></p>
+<p>After initialization done, you should be able to find such dependencies in the image below in pom.xml of your project.</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/3.PNG" alt="3"></p>
+<h1 id="Introduce-MyBatis-Generator-Plug-in"><a href="#Introduce-MyBatis-Generator-Plug-in" class="headerlink" title="Introduce MyBatis Generator Plug-in"></a>Introduce MyBatis Generator Plug-in</h1><p>What’s coming next is introducing the plug-in to your project. Simply adding those codes below in to pom.xml will do all the magic.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>But introducing the plug-in won’t be enough, we need to further deploy a config file to direct the generator to work.</p>
+<h1 id="Deploy-MyBatis-Generator-Plug-in"><a href="#Deploy-MyBatis-Generator-Plug-in" class="headerlink" title="Deploy MyBatis Generator Plug-in"></a>Deploy MyBatis Generator Plug-in</h1><p>Before we actually deploy the config file, we need to first build a new mybatis-generator-config.xml and then introduce this file to the pom.xml.</p>
+<h3 id="Deploy-the-File-Path-of-Your-Config-File"><a href="#Deploy-the-File-Path-of-Your-Config-File" class="headerlink" title="Deploy the File Path of Your Config File"></a>Deploy the File Path of Your Config File</h3><p>Add those codes into pom.xml.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--mybatis config file path--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configurationFile</span>&gt;</span>src/main/resources/mybatis-generator-config.xml<span class="tag">&lt;/<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Pay attention here, the path should be the path of the config file relative to the pom.xml.</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/4.jpg" alt="4"></p>
+<h3 id="Allow-Overwriting-Generated-Files"><a href="#Allow-Overwriting-Generated-Files" class="headerlink" title="Allow Overwriting Generated Files"></a>Allow Overwriting Generated Files</h3><p>Sometimes our database is updated, and we need to generate new flies accordingly. The regular way to do this is deleting old files manually, and then using MyBatis Generator to generate new files. But you can also allow the generator to overwrite the old files, so you can update your code without deleting the old files manually.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--mybatis config file path--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configurationFile</span>&gt;</span>src/main/resources/mybatis-generator-config.xml<span class="tag">&lt;/<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--allow overwriting files--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>However, MyBatis Generator only overwrites the old classes and mappers’ interfaces, and leaves the old mapper.xml unchanged, only adds new codes. This ensures the sql codes wrote by users will not be altered by the generator.</p>
+<h3 id="Add-JDBC-Drvier-for-Database"><a href="#Add-JDBC-Drvier-for-Database" class="headerlink" title="Add JDBC Drvier for Database"></a>Add JDBC Drvier for Database</h3><p>MyBatis generator needs to connect to database, so the according JDBC driver is necessary. We can add the JDBC driver to the generator manually like this:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--mybatis config file path--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configurationFile</span>&gt;</span>src/main/resources/mybatis-generator-config.xml<span class="tag">&lt;/<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--allow overwriting files--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- JDBC for mysql --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">					<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mysql.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>But most of the time, our project has been deployed with JDBC, so there will be redundancy if we deploy it again. </p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/5.PNG" alt="5"></p>
+<p>Maven provided <strong>includeCompileDependencies</strong> attribute to allow plug-in to use dependencies, so we don’t need to deploy it repeatedly.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--mybatis config file path--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configurationFile</span>&gt;</span>src/main/resources/mybatis-generator-config.xml<span class="tag">&lt;/<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--allow overwriting files--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--add the dependecies of pom into generator--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includeCompileDependencies</span>&gt;</span>true<span class="tag">&lt;/<span class="name">includeCompileDependencies</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span>    </span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Deploy-MyBatis-Generator-Config"><a href="#Deploy-MyBatis-Generator-Config" class="headerlink" title="Deploy MyBatis Generator Config"></a>Deploy MyBatis Generator Config</h1><p>Now it’s time for us to deploy the config file for real.  When MyBatis Generator starts, it will access the config file according to the deployment in the pom.xml. And this config is the real director of the generator and the most important part is the context part. The config file needs at least one context to function correctly.</p>
+<h3 id="Introduce-Outer-Configuration-File"><a href="#Introduce-Outer-Configuration-File" class="headerlink" title="Introduce Outer Configuration File"></a>Introduce Outer Configuration File</h3><p>MyBatis Generator Config allows introducing outer configuration files, and the path should be relative to the current config file.</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/6.JPG" alt="6"></p>
+<p>Content in the application.properties:</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql</span></span><br><span class="line"><span class="meta">spring.datasource.driverClassName</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/ice?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">*****</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">*****</span></span><br></pre></td></tr></table></figure>
+
+<p>Pay attention here. The url defines the schema of MySQL that is accessed by MyBatis Generator. Username and password should be your information to connect the database.</p>
+<h3 id="Deploy-Context"><a href="#Deploy-Context" class="headerlink" title="Deploy Context"></a>Deploy Context</h3><p>It’s deployed in <generatorConfiguration>.</generatorConfiguration></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context</span> <span class="attr">id</span>=<span class="string">"myContext"</span> <span class="attr">targetRuntime</span>=<span class="string">"MyBatis3"</span> <span class="attr">defaultModelType</span>=<span class="string">"flat"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>id</strong>: whatever you like. Just make sure the ids of multiple contexts are different.</li>
+<li><strong>defaultModelType</strong>: Default value is <strong>conditional</strong>, and value <strong>flat</strong> means every table has its own folder.</li>
+<li><strong>targetRuntime</strong>: Default values is <strong>MyBatis3</strong>.  Another option is <strong>MyBatis3Simple</strong>, this will alter content of the generated mapper interfaces and mapper.xml.</li>
+</ul>
+<p><strong>targetRuntime = MyBatis3</strong>, the generated codes:</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/7.png" alt="7"></p>
+<p><strong>targetRuntime = Mybatis3Simple</strong>, the generated mappers interfaces and mapper.xml will contain less functions:</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/8.png" alt="8"></p>
+<h3 id="Sub-elements-of-Context"><a href="#Sub-elements-of-Context" class="headerlink" title="Sub-elements of Context"></a>Sub-elements of Context</h3><p>MyBatis provides some other sub-elements for users to deploy. Those elements should be given by the strict rules of amount and order:</p>
+<ol>
+<li><p><strong>property</strong> (0..N)</p>
+</li>
+<li><p><strong>plugin</strong> (0..N)</p>
+</li>
+<li><p><strong>commentGenerator</strong> (0 or 1)</p>
+</li>
+<li><p><strong>jdbcConnection</strong> (needs connectionFactory or jdbcConnection)</p>
+</li>
+<li><p><strong>javaTypeResolver</strong> (0 or 1)</p>
+</li>
+<li><p><strong>javaModelGenerator</strong> (At least one)</p>
+</li>
+<li><p><strong>sqlMapGenerator</strong> (0 or 1)</p>
+</li>
+<li><p><strong>javaClientGenerator</strong> (0 or 1)</p>
+</li>
+<li><p><strong>table</strong> (1..N)</p>
+</li>
+</ol>
+<h4 id="Plug-in"><a href="#Plug-in" class="headerlink" title="Plug-in"></a>Plug-in</h4><p>You can deploy a plug-in like this:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span> <span class="attr">type</span>=<span class="string">"org.mybatis.generator.plugins.EqualsHashCodePlugin"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>This plug-in add functions of <strong>equals</strong> and <strong>hashCode</strong> to the Java classes.</p>
+<h4 id="CommentGenerator"><a href="#CommentGenerator" class="headerlink" title="CommentGenerator"></a>CommentGenerator</h4><p>This one is used to generate comments of the codes. By default MyBatis generator will generate comments, so you can leave this alone if you want comments. </p>
+<p>You can remove comments by deploying like this:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">commentGenerator</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suppressAllComments"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">commentGenerator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="javaTypeResolver"><a href="#javaTypeResolver" class="headerlink" title="javaTypeResolver"></a>javaTypeResolver</h4><p>javaTyprResolver defines the transforming rules between JDBC and java data types. You can leave it undeployed to utilize the default rules.</p>
+<p>Actually we can only changed the rules of <em>bigDecimal</em> and <em>date</em> types.</p>
+<h4 id="javaModelGenerator"><a href="#javaModelGenerator" class="headerlink" title="javaModelGenerator"></a>javaModelGenerator</h4><p>This one defines the paths of the generated packages and codes:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">javaModelGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"com.example.demo.entity"</span> <span class="attr">targetProject</span>=<span class="string">"src/main/java"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Enable schema as subpackages, default = false --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--&lt;property name="enableSubPackages" value="false"/&gt;--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Enable altering string in set functions, default = false --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"trimStrings"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">javaModelGenerator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2019/11/20/springboot-MybatisGenerator/10.jpg" alt="10"></p>
+<h4 id="sqlMapGenerator"><a href="#sqlMapGenerator" class="headerlink" title="sqlMapGenerator"></a>sqlMapGenerator</h4><p>Defines the paths of mapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sqlMapGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"mapper"</span> <span class="attr">targetProject</span>=<span class="string">"src/main/resources"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--&lt;property name="enableSubPackages" value="false"/&gt;--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">sqlMapGenerator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2019/11/20/springboot-MybatisGenerator/9.jpg" alt="9"></p>
+<h4 id="javaClientGenerator"><a href="#javaClientGenerator" class="headerlink" title="javaClientGenerator"></a>javaClientGenerator</h4><p>Deploy the path of XXXMapper.java(interfaces), similar to those two generators above.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">javaClientGenerator</span> <span class="attr">targetPackage</span>=<span class="string">"com.example.demo.dao"</span> <span class="attr">targetProject</span>=<span class="string">"src/main/java"</span> <span class="attr">type</span>=<span class="string">"XMLMAPPER"</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--&lt;property name="enableSubPackages" value="false"/--&gt;</span><span class="tag">&lt;/<span class="name">javaClientGenerator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p><em>schema</em> is the name of the database, which is unnecessary to deploy when using MySQL, but necessary for oracle. </p>
+<p><em>tableName</em> is the name of table in the database.</p>
+<p><em>domainObjectName</em> is the name of classes to be generated. When it undeployed, Mybatis generator will set the names by PascalCase.</p>
+<p><em>enableXXXByExample</em> is by default true but only functions when <em>targetRuntime</em> = “MyBatis3”. And it will generate a corresponding Example class to help users to do Query by different conditions. You can set it as false if you don’t need it.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">schema</span>=<span class="string">""</span> <span class="attr">tableName</span>=<span class="string">"user"</span> <span class="attr">domainObjectName</span>=<span class="string">"User"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">enableCountByExample</span>=<span class="string">"false"</span> <span class="attr">enableDeleteByExample</span>=<span class="string">"false"</span> <span class="attr">enableSelectByExample</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">enableUpdateByExample</span>=<span class="string">"false"</span> <span class="attr">selectByExampleQueryId</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Use-MyBatis-Generator"><a href="#Use-MyBatis-Generator" class="headerlink" title="Use MyBatis Generator"></a>Use MyBatis Generator</h1><p>Now all deployment done! Just double click on MyBatis Generator in Maven and you’ll get all you need.</p>
+<p><img src="/2019/11/20/springboot-MybatisGenerator/11.PNG" alt="11"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Yimo Liu
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://ludwigliu-cn.github.io/2019/11/20/springboot-MybatisGenerator/" title="Springboot+MybatisGenerator">https://ludwigliu-cn.github.io/2019/11/20/springboot-MybatisGenerator/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Springboot/" rel="tag"># Springboot</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Mybatis/" rel="tag"># Mybatis</a>
+              <a href="/tags/IntelliJ-IDEA/" rel="tag"># IntelliJ IDEA</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/13/SpatialTransformer/" rel="next" title="Spatial Transformer">
+                  <i class="fa fa-chevron-left"></i> Spatial Transformer
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-Initialization"><span class="nav-number">1.</span> <span class="nav-text">Project Initialization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduce-MyBatis-Generator-Plug-in"><span class="nav-number">2.</span> <span class="nav-text">Introduce MyBatis Generator Plug-in</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deploy-MyBatis-Generator-Plug-in"><span class="nav-number">3.</span> <span class="nav-text">Deploy MyBatis Generator Plug-in</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-the-File-Path-of-Your-Config-File"><span class="nav-number">3.0.1.</span> <span class="nav-text">Deploy the File Path of Your Config File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Allow-Overwriting-Generated-Files"><span class="nav-number">3.0.2.</span> <span class="nav-text">Allow Overwriting Generated Files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add-JDBC-Drvier-for-Database"><span class="nav-number">3.0.3.</span> <span class="nav-text">Add JDBC Drvier for Database</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deploy-MyBatis-Generator-Config"><span class="nav-number">4.</span> <span class="nav-text">Deploy MyBatis Generator Config</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduce-Outer-Configuration-File"><span class="nav-number">4.0.1.</span> <span class="nav-text">Introduce Outer Configuration File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-Context"><span class="nav-number">4.0.2.</span> <span class="nav-text">Deploy Context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sub-elements-of-Context"><span class="nav-number">4.0.3.</span> <span class="nav-text">Sub-elements of Context</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Plug-in"><span class="nav-number">4.0.3.1.</span> <span class="nav-text">Plug-in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CommentGenerator"><span class="nav-number">4.0.3.2.</span> <span class="nav-text">CommentGenerator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javaTypeResolver"><span class="nav-number">4.0.3.3.</span> <span class="nav-text">javaTypeResolver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javaModelGenerator"><span class="nav-number">4.0.3.4.</span> <span class="nav-text">javaModelGenerator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlMapGenerator"><span class="nav-number">4.0.3.5.</span> <span class="nav-text">sqlMapGenerator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#javaClientGenerator"><span class="nav-number">4.0.3.6.</span> <span class="nav-text">javaClientGenerator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#table"><span class="nav-number">4.0.3.7.</span> <span class="nav-text">table</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Use-MyBatis-Generator"><span class="nav-number">5.</span> <span class="nav-text">Use MyBatis Generator</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Yimo Liu"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Yimo Liu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LudwigLiu-CN" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;LudwigLiu-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liuyimoCN@gmail.com" title="E-Mail &amp;rarr; mailto:liuyimoCN@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yimo Liu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">Symbols count total: </span>
+    <span title="Symbols count total">19k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">Reading time total &asymp;</span>
+    <span title="Reading time total">17 mins.</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='112,128,144' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'dfEb28sYjsmKzQD26ydL2N5u-gzGzoHsz',
+    appKey: 'yIUtKD9To8FeymQWeR7r8IKw',
+    placeholder: "Your amicable remarks are welcome!",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'en' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
