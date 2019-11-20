@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/</loc>
+    
+    <lastmod>2019-11-20T08:51:12.739Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ludwigliu-cn.github.io/2019/11/20/springboot-MybatisGenerator/</loc>
     
     <lastmod>2019-11-20T07:11:53.501Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>https://ludwigliu-cn.github.io/tags/index.html</loc>
     
     <lastmod>2019-10-30T07:29:09.132Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ludwigliu-cn.github.io/2019/10/29/My-Hello-World/</loc>
-    
-    <lastmod>2019-10-30T01:14:24.783Z</lastmod>
     
   </url>
   
